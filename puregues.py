@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import asyncio
 import yt_dlp
 import google.generativeai as genai
+import requests
 
 # Carrega variáveis do .env
 load_dotenv()
@@ -20,11 +21,10 @@ model = genai.GenerativeModel("gemini-1.5-pro")
 intents = discord.Intents.default()
 intents.message_content = True
 intents.guilds = True
+intents.messages = True
 intents.voice_states = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
-
-# Variáveis globais
 looping = False
 last_url = None
 
@@ -104,10 +104,27 @@ async def stop(ctx):
     else:
         await ctx.send("❌ Não estou em nenhum canal de voz.")
 
+@bot.command(name="chuva")
+async def chuva(ctx):
+    try:
+        url = "https://api.open-meteo.com/v1/forecast?latitude=-14.2233&longitude=-42.7819&daily=precipitation_probability_max&timezone=America%2FSao_Paulo"
+        response = requests.get(url)
+        data = response.json()
+
+        chance = data['daily']['precipitation_probability_max'][0]
+
+        if chance >= 50:
+            await ctx.send("🌧️ Vai chover hoje em Guanambi, puregues!")
+        else:
+            await ctx.send("vai chover não betinha https://cdn.discordapp.com/attachments/965758919081345047/1359271370835365888/ssstwitter.com_1744145935347.mp4?ex=67f6df9c&is=67f58e1c&hm=fe5f851915a0523e7cd40b76979cc37c5eb9b86c74d1ae3661ef58357ec95b54&")
+    except Exception as e:
+        print("Erro ao verificar previsão do tempo:", e)
+        await ctx.send("❌ Não consegui prever a chuva agora, puregues...")
+
 @bot.event
 async def on_message(message):
     if bot.user in message.mentions and not message.author.bot:
-        prompt = f"imita a personagem Ayumu Osaka Kasuga de Azumanga Daiohas: {message.content}"
+        prompt = f"Responda de forma engraçada e simpática como Ayumu Osaka: {message.content}"
 
         try:
             response = model.generate_content(prompt)
