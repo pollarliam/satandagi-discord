@@ -1,0 +1,36 @@
+Terms and Conditions for Using nikers bot
+
+1. Features and Usage
+
+nikers provides the following functionalities:
+	•	Music Playback: Play music via YouTube links.
+	•	Question Answering: Access responses from the Google GenAI (Gemini) API.
+	•	Weather Information: Retrieve weather updates, specifically rain forecasts, for a predefined location using the OpenWeather API.
+
+2. Third-Party Services
+
+This bot interacts with external services:
+	•	YouTube
+	•	Google GenAI (Gemini)
+	•	OpenWeather
+
+3. Use It However You Like But Read This Bit
+
+We genuinely don’t care what you do with Nikers. Use it, fork it, break it, yell at it. we dgaf, the code is awful, looking at it will make you hurt, sorry in advance.
+
+But—and this part does matter—you can’t use Nikers in ways that violate the terms of the services it uses. That means:
+	•	YouTube Terms of Service
+	•	Google GenAI Terms
+	•	OpenWeather Terms
+
+If you use Nikers in a way that breaks those rules, that’s on you, not us. Don’t be a jerk. (seriously please be nice)
+
+Nikers might stop working at any time.
+Hel i guarantee it.
+We might not fix it.
+we probably won’t.
+we won't.
+
+Final Note
+
+There’s no fine print. Just be cool, don’t break any actual terms from the big corpos, thank you ily
